@@ -19,7 +19,7 @@ public class Producto {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-//xs
+//xss
     private String nombre;
     private Integer cantidad;
     private Boolean disponibilidad;
