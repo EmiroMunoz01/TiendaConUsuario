@@ -136,7 +136,6 @@ public class ServicioProducto implements ImplementacionProducto {
 
         Producto buscarProducto = repositorioProducto.findProductoBySerial(serial).orElseThrow(() -> new EntityNotFoundException("Producto con el id " + serial + " no existe."));
 
-
         buscarProducto.setNombre(producto.getNombre());
         buscarProducto.setSerial(producto.getSerial());
         buscarProducto.setPrecio(producto.getPrecio());
