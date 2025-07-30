@@ -11,7 +11,6 @@ public interface RepositorioProducto extends JpaRepository<Producto, Integer> {
 
     Optional<Producto> findProductoBySerial(String serial);
 
-
     void deleteProductoBySerial(String serial);
 
 }

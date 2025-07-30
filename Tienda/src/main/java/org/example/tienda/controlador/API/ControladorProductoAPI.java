@@ -4,18 +4,17 @@ import jakarta.validation.Valid;
 import org.example.tienda.dto.producto.administrador.CrearProductoAdministradorDTO;
 import org.example.tienda.dto.producto.administrador.EditarProductoAdministradorDTO;
 import org.example.tienda.servicio.producto.ServicioProducto;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("tienda/producto")
-public class ControladorProducto {
+@RequestMapping("tienda/api/producto")
+public class ControladorProductoAPI {
 
 
     private final ServicioProducto servicioProducto;
 
-    public ControladorProducto(ServicioProducto servicioProducto) {
+    public ControladorProductoAPI(ServicioProducto servicioProducto) {
         this.servicioProducto = servicioProducto;
     }
 
