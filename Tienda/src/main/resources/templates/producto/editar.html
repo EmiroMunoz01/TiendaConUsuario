@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Producto</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+    <!-- Bootstrap CSS -->
+    <link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+    <!-- CSS personalizado (opcional) -->
+    <link th:href="@{/css/custom.css}" rel="stylesheet">
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+        <a class="navbar-brand" href="#" th:href="@{/}">Mi App</a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav me-auto">
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/}">Inicio</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/productos}">Productos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/contacto}">Contacto</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<h1>Editar Producto</h1>
+
+
+
+
+<form th:action="@{/tienda/producto/editar/id/{id}(id=${producto.id})}"
+      th:object="${producto}" method="post">
+    <input type="hidden" th:field="*{id}">
+
+    <div class="mb-3">
+        <label for="nombre" class="form-label">Nombre</label>
+        <input type="text" th:field="*{nombre}" id="nombre" class="form-control" required>
+    </div>
+
+    <div class="mb-3">
+        <label for="serial" class="form-label">Serial</label>
+        <input type="text" th:field="*{serial}" id="serial" class="form-control" required>
+    </div>
+
+    <div class="mb-3">
+        <label for="precio" class="form-label">Precio</label>
+        <input type="number" th:field="*{precio}" id="precio" class="form-control" required>
+    </div>
+
+    <div class="mb-3">
+        <label for="cantidad" class="form-label">Cantidad</label>
+        <input type="number" th:field="*{cantidad}" id="cantidad" class="form-control" required>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+    <a th:href="@{/tienda/producto/listar}" class="btn btn-danger" role="button">
+        Cancelar
+    </a>
+</form>
+
+
+</body>
+</html>

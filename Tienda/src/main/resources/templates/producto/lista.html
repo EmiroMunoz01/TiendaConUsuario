@@ -1,23 +1,63 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lista de Productos</title>
     <link rel="stylesheet" th:href="@{/css/styles.css}">
+
+    <!-- Bootstrap CSS -->
+    <link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+
+    <!-- CSS personalizado (opcional) -->
+    <link th:href="@{/css/custom.css}" rel="stylesheet">
+
 </head>
 <body>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+        <a class="navbar-brand" href="#" th:href="@{/}">Mi App</a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav me-auto">
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/}">Inicio</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/productos}">Productos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/contacto}">Contacto</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
 <h1>Productos Registrados</h1>
 
-<a th:href="@{/tienda/producto/crear}">Crear nuevo producto</a>
+<a th:href="@{/tienda/producto/crear}" class="btn btn-primary" role="button">
+    Crear nuevo producto
+</a>
 
-<table border="1">
+
+
+<table class="table">
     <thead>
     <tr>
-        <th>ID</th>
-        <th>Nombre</th>
-        <th>Serial</th>
-        <th>Precio</th>
-        <th>Cantidad</th>
+        <th scope="col">ID</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Serial</th>
+        <th scope="col">Precio</th>
+        <th scope="col">Cantidad</th>
+        <th scope="col">Editar</th>
+        <th scope="col">Eliminar</th>
     </tr>
     </thead>
     <tbody>
@@ -27,6 +67,21 @@
         <td th:text="${producto.serial}">Serial</td>
         <td th:text="${producto.precio}">0.0</td>
         <td th:text="${producto.cantidad}">0</td>
+        <td>
+            <a th:href="@{/tienda/producto/editar/{id}(id=${producto.id})}" class="btn btn-warning" role="button">
+                Editar
+            </a>
+
+        </td>
+        <td>
+            <form th:action="@{/tienda/producto/eliminar/{id}(id=${producto.id})}" method="post" th:object="${producto}" style="display:inline;">
+                <button type="submit" class="btn btn-danger btn-sm"
+                        onclick="return confirm('¿Estás seguro de eliminar este producto?');">
+                    Eliminar
+                </button>
+            </form>
+
+        </td>
     </tr>
     </tbody>
 </table>
